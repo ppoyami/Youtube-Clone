@@ -6,18 +6,15 @@ import { Provider } from 'react-redux';
 import App from './App';
 import Global from './styles/Global';
 import theme from './styles/theme';
-import rootContext from './context';
 import store from './store';
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <Global />
-      <rootContext>
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </rootContext>
+      <Provider store={store}>
+        <App />
+      </Provider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')

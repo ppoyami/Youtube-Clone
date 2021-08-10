@@ -10,6 +10,7 @@ const Global = createGlobalStyle`
     font-family: 'Lato', sans-serif;
     background-color: ${({ theme }) => theme.colors.backgroundColor};
     height: 100vh;
+    color: ${({ theme }) => theme.colors.textColor}
   }
 
   *,

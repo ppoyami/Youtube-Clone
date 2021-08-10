@@ -1,3 +1,5 @@
+import { youtube } from '../../service';
+
 const initialState = {
   loading: false,
   data: null,
@@ -34,3 +36,18 @@ function video(state = initialState, aciton) {
 }
 
 export default video;
+
+// thunk 함수 작성
+/*
+ (params) => (dispatch, state) => {..logic}
+ */
+
+export const getPopularVideo = async (dispatch, _) => {
+  dispatch({ type: LOADING });
+  try {
+    const payload = await youtube.mostPopular();
+    dispatch({ type: SUCCESS, payload });
+  } catch (e) {
+    dispatch({ type: ERROR, error: e.message });
+  }
+};

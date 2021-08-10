@@ -1,30 +1,16 @@
-export default class Youtube {
-  constructor(httpClient) {
-    this.youtube = httpClient;
-  }
+import axios from 'axios';
+import dotenv from 'dotenv';
 
-  async mostPopular() {
-    const response = await this.youtube.get('videos', {
-      params: {
-        part: 'snippet',
-        chart: 'mostPopular',
-        maxResults: 25,
-      },
-    });
-    console.log('popular', response);
-    return response.data.items;
-  }
+import Youtube from './youtube';
+import { BASE_URL } from '../constants';
 
-  async search(query) {
-    const response = await this.youtube.get('search', {
-      params: {
-        part: 'snippet',
-        maxResults: 25,
-        type: 'video',
-        q: query,
-      },
-    });
-    console.log('search', response);
-    return response.data.items.map(item => ({ ...item, id: item.id.videoId }));
-  }
-}
+dotenv.config();
+
+const httpClient = axios.create({
+  baseURL: BASE_URL,
+  params: {
+    key: process.env.REACT_APP_YOUTUBE_API_KEY,
+  },
+});
+
+export const youtube = new Youtube(httpClient);
