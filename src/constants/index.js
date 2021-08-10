@@ -7,7 +7,13 @@ import {
   BsFillBellFill,
   BsPeopleCircle,
   BsGrid3X3Gap,
+  BsList,
+  BsFillFolderFill,
 } from 'react-icons/bs';
+
+import { ImPlay } from 'react-icons/im';
+
+import { POPULAR_VIDEO } from './mock';
 
 export const ROUTES = {
   home: '/',
@@ -16,12 +22,19 @@ export const ROUTES = {
 export const BASE_URL = 'https://www.googleapis.com/youtube/v3';
 
 export const icons = {
+  유투브: ImPlay(),
   검색: BsSearch(),
-  하우스: BsHouseDoorFill(),
   마이크: BsMicFill(),
-  구독: BsCollectionPlay(),
   녹화: BsCameraVideoFill(),
   알림: BsFillBellFill(),
   유저: BsPeopleCircle(),
   앱: BsGrid3X3Gap(),
+  햄버거: BsList(),
+  sidebar_icons: [
+    { component: BsHouseDoorFill(), text: '홈' },
+    { component: BsCollectionPlay(), text: '구독' },
+    { component: BsFillFolderFill(), text: '보관함' },
+  ],
 };
+
+export const popular = POPULAR_VIDEO;

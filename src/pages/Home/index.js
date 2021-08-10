@@ -1,17 +1,14 @@
 import React from 'react';
 
-import Header from '../../components/Home/Header';
-import Sidebar from '../../components/Home/Sidebar';
 import Tags from '../../components/Home/Tags';
 import List from '../../components/Home/List';
+import * as S from './Home.styled';
 
 export default function Home() {
   return (
-    <div>
-      <Header />
-      <Sidebar />
+    <S.Layout>
       <Tags />
       <List />
-    </div>
+    </S.Layout>
   );
 }

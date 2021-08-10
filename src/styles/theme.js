@@ -6,7 +6,6 @@ const colors = {
   textColor: '#f9f9f9',
   subTextColor: '#676767',
   primaryColor: '#cc0101',
-  secondaryColor: '#cc0101',
 };
 const align = {
   flexHorizontal: {

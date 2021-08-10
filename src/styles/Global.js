@@ -7,7 +7,7 @@ const Global = createGlobalStyle`
   }
 
   body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lato', 'Noto Sans KR', serif;
     background-color: ${({ theme }) => theme.colors.backgroundColor};
     height: 100vh;
     color: ${({ theme }) => theme.colors.textColor}
