@@ -1,10 +1,13 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled(Link)`
   padding: 0.8rem;
   background-color: ${({ theme }) => theme.colors.navColor};
   border-radius: 5px;
   cursor: pointer;
+  color: inherit;
+  text-decoration: none;
 `;
 export const Thumbnail = styled.img`
   width: 100%;

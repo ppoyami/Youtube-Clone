@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Detail from './pages/Detail';
-import Header from './components/Home/Header';
-import Sidebar from './components/Home/Sidebar';
+import Header from './components/common/Header';
+import Sidebar from './components/common/Sidebar';
 
 import { ROUTES } from './constants';
 
