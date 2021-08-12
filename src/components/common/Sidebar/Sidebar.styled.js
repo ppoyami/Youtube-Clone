@@ -4,7 +4,7 @@ export const Container = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  width: 7rem;
+  width: 8rem;
   height: 100vh;
   background-color: ${({ theme }) => theme.colors.navColor};
   padding-top: 2rem;
@@ -50,12 +50,12 @@ export const Icon = styled.i`
   flex-direction: column;
   margin-bottom: 5rem;
   cursor: pointer;
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   color: ${({ theme }) => theme.colors.subTextColor};
 
   & > span {
     text-align: center;
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     margin-top: 1rem;
   }
 
@@ -71,7 +71,9 @@ export const Icon = styled.i`
       flex-direction: row;
       justify-content: flex-start;
       padding-left: 5rem;
+      font-size: 2.5rem;
       & > span {
+        font-size: 1.5rem;
         margin-top: 0;
         margin-left: 1rem;
       }

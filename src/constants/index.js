@@ -31,9 +31,9 @@ export const icons = {
   앱: BsGrid3X3Gap(),
   햄버거: BsList(),
   sidebar_icons: [
-    { component: BsHouseDoorFill(), text: '홈' },
-    { component: BsCollectionPlay(), text: '구독' },
-    { component: BsFillFolderFill(), text: '보관함' },
+    { component: BsHouseDoorFill(), text: 'Home' },
+    { component: BsCollectionPlay(), text: 'Subscriptions' },
+    { component: BsFillFolderFill(), text: 'Library' },
   ],
 };
 
