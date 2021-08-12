@@ -21,8 +21,8 @@ export const Description = styled.div`
   display: flex;
 `;
 export const ChannelThumbnail = styled.img`
-  width: 5rem;
-  height: 5rem;
+  width: 4rem;
+  height: 4rem;
   margin-right: 1rem;
   border-radius: 50%;
   object-fit: cover;
@@ -32,12 +32,16 @@ export const TextBox = styled.div`
   flex-direction: column;
 `;
 export const Title = styled.h3`
-  max-height: 5rem;
-  font-size: 1.8rem;
+  /* max-height: 5rem; */
+  font-size: 1.7rem;
   font-weight: 700;
-  line-height: 1.5;
   margin-bottom: 1rem;
+
+  line-height: 1.5em;
+  height: 3em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
   overflow: hidden;
+  /* text-overflow: ellipsis; */
+  -webkit-line-clamp: 2;
 `;
 export const Info = styled.div`
   font-size: 1.5rem;

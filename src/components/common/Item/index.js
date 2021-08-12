@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import * as S from './Item.styled';
-import { parseViewCount } from '../../../helpers';
+import { parseViewCount, parseTime } from '../../../helpers';
 import { ROUTES } from '../../../constants';
 import { selectVideo } from '../../../store/modules/selectedVideo';
 
@@ -34,7 +34,7 @@ export default function Item({ video }) {
             <p>{channelTitle}</p>
             <span>조회수 {parseViewCount(viewCount)}</span>
             <span style={{ margin: '0 .5rem' }}>•</span>
-            <span>{publishedAt}</span>
+            <span>{parseTime(publishedAt)}전</span>
           </S.Info>
         </S.TextBox>
       </S.Description>

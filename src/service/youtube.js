@@ -12,7 +12,7 @@ export default class Youtube {
         regionCode: 'KR',
       },
     });
-    // TODO: channel 정보도 포함시켜서 반환한다.
+
     return this.appendChannelData(
       response.data.items,
       video => video?.snippet?.channelId
