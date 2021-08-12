@@ -29,7 +29,6 @@ export default class Youtube {
         },
       });
     } catch (e) {
-      console.log(e); // ! console
       response = null;
     }
 
@@ -59,7 +58,6 @@ export default class Youtube {
 
   appendChannelData(source, getChannelId) {
     const promises = source.map(getChannelId).map(this.channel.bind(this));
-    console.log('channel promises', promises);
 
     return Promise.all(promises).then(channelList =>
       source.map((data, i) => ({ ...data, ...channelList[i] }))

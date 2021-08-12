@@ -1,4 +1,4 @@
-export function parseViewCount(viewcount) {
+export function parseCount(viewcount) {
   return viewcount.length > 4 ? viewcount.slice(0, -4) + '만' : viewcount;
 }
 
@@ -18,11 +18,11 @@ export function parseTime(publishedAt) {
   const hours = displayTime.getHours();
   const minutes = displayTime.getMinutes();
 
-  console.log(publishedAt); //  2021-08-10T07:06:39Z
-  console.log(uploadDate); // Tue Aug 10 2021 16:06:39 GMT+0900 (한국 표준시)
-  console.log(currentTime); // 1628751997808
-  console.log(iso); // 2021-08-12T07:06:37.808Z
-  console.log(`${currentTime} - ${uploadTime} = ${timeGap}`); // 1628752603551 - 1628579199000 = 173404551
+  // console.log(publishedAt); //  2021-08-10T07:06:39Z
+  // console.log(uploadDate); // Tue Aug 10 2021 16:06:39 GMT+0900 (한국 표준시)
+  // console.log(currentTime); // 1628751997808
+  // console.log(iso); // 2021-08-12T07:06:37.808Z
+  // console.log(`${currentTime} - ${uploadTime} = ${timeGap}`); // 1628752603551 - 1628579199000 = 173404551
 
   if (hours === 0) {
     return minutes + '분';

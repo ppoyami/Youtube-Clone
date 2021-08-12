@@ -9,13 +9,13 @@ function selectedVideo(state = initialState, aciton) {
     case SET_VIDEO:
       return {
         id: aciton.id,
-        snippet: aciton.payload,
+        payload: aciton.payload,
       };
     default:
       return state;
   }
 }
 
-export const selectVideo = (id, payload) => ({ type: SET_VIDEO, payload, id });
+export const selectVideo = (id, payload) => ({ type: SET_VIDEO, id, payload });
 
 export default selectedVideo;
