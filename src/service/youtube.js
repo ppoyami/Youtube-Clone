@@ -13,12 +13,13 @@ export default class Youtube {
       },
     });
 
-    return this.appendChannelData(
+    return this.appendData(
       response.data.items,
-      video => video?.snippet?.channelId
+      video => video?.snippet?.channelId,
+      this.channel
     );
   }
-
+  // TODO: try catch 이렇게 쓰는 게 맞는 걸까??
   async channel(id) {
     let response;
     try {
@@ -29,7 +30,7 @@ export default class Youtube {
         },
       });
     } catch (e) {
-      response = null;
+      response = undefined;
     }
 
     return { channelInfo: response?.data?.items[0] };
@@ -38,7 +39,7 @@ export default class Youtube {
   async search(query) {
     const response = await this.youtube.get('search', {
       params: {
-        part: 'snippet, statistics',
+        part: 'snippet',
         maxResults: 10,
         type: 'video',
         q: query,
@@ -50,17 +51,38 @@ export default class Youtube {
       id: item.id.videoId,
     }));
 
-    return this.appendChannelData(
+    const result = this.appendData(
       serchedVideoList,
-      video => video?.snippet?.channelId
-    );
+      video => video?.snippet?.channelId,
+      this.channel
+    ).then(list => {
+      return this.appendData(list, video => video.id, this.getVideoStatistics);
+    });
+
+    return result;
   }
 
-  appendChannelData(source, getChannelId) {
-    const promises = source.map(getChannelId).map(this.channel.bind(this));
+  async getVideoStatistics(id) {
+    let response;
+    try {
+      response = await this.youtube.get('videos', {
+        params: {
+          part: 'statistics',
+          id,
+        },
+      });
+    } catch (e) {
+      response = undefined;
+    }
 
-    return Promise.all(promises).then(channelList =>
-      source.map((data, i) => ({ ...data, ...channelList[i] }))
+    return { statistics: response?.data?.items[0].statistics };
+  }
+
+  appendData(source, getId, f) {
+    const promises = source.map(getId).map(f.bind(this));
+
+    return Promise.all(promises).then(list =>
+      source.map((data, i) => ({ ...data, ...list[i] }))
     );
   }
 }

@@ -4,9 +4,12 @@ import { useSelector } from 'react-redux';
 import { parseCount } from '../../helpers';
 import Video from '../../components/Detail/Video';
 import * as S from './Detail.styled';
+import Item from '../../components/Common/Item';
 
 export default function Detail() {
+  // TODO: 디테일 페이지에서 세로고침하면 에러 생긴다 막을 수 있는 방법은..?
   const { id, payload } = useSelector(state => state.selectedVideo);
+  const { data } = useSelector(state => state.video);
   const { snippet, statistics, channelInfo } = payload;
 
   const channelTitle = channelInfo.snippet.title;
@@ -40,6 +43,11 @@ export default function Detail() {
           </S.More>
         </S.ChannelInfo>
       </S.Content>
+      <S.SideList>
+        {data.map(video => (
+          <Item key={video.id} video={video} />
+        ))}
+      </S.SideList>
     </S.Layout>
   );
 }

@@ -41,13 +41,21 @@ export default video;
 /*
  (params) => (dispatch, state) => {..logic}
  */
-console.log(youtube); // BUG: null이 나온다. 분명 service에서 인스턴스를 만들어줄텐데...
 
 export const getPopularVideo = async (dispatch, _) => {
   dispatch({ type: LOADING });
   try {
     const payload = await youtube.mostPopular();
-    console.log('mostPopular', payload);
+    dispatch({ type: SUCCESS, payload });
+  } catch (e) {
+    dispatch({ type: ERROR, error: e.message });
+  }
+};
+
+export const searchVideo = query => async (dispatch, _) => {
+  dispatch({ type: LOADING });
+  try {
+    const payload = await youtube.search(query);
     dispatch({ type: SUCCESS, payload });
   } catch (e) {
     dispatch({ type: ERROR, error: e.message });

@@ -2,10 +2,11 @@ import styled, { css } from 'styled-components';
 
 export const Layout = styled.div`
   padding-left: 5rem;
+  display: flex;
 `;
 
 export const Content = styled.div`
-  width: 75%;
+  flex: 4;
   padding: 2rem;
 `;
 
@@ -64,4 +65,11 @@ export const More = styled.a`
   font-size: 1.5rem;
   color: ${({ theme }) => theme.colors.subTextColor};
   cursor: pointer;
+`;
+
+export const SideList = styled.div`
+  height: 100vh;
+  overflow-y: auto;
+  flex: 1;
+  padding: 2rem 0;
 `;

@@ -14,6 +14,7 @@ function App() {
       <Sidebar />
       <Switch>
         <Route exact path={ROUTES.home} component={Home} />
+        <Route exact path={ROUTES.search} component={Home} />
         <Route path={ROUTES.detail} component={Detail} />
       </Switch>
     </Router>

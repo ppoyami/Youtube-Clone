@@ -17,6 +17,7 @@ import { POPULAR_VIDEO } from './mock';
 
 export const ROUTES = {
   home: '/',
+  search: '/search',
   detail: '/detail',
 };
 export const BASE_URL = 'https://www.googleapis.com/youtube/v3';
