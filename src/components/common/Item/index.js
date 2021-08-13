@@ -2,21 +2,19 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import * as S from './Item.styled';
-import { parseCount, parseTime } from '../../../helpers';
+import { parseCount, parseTime, getVideoInfo } from '../../../helpers';
 import { ROUTES } from '../../../constants';
 import { selectVideo } from '../../../store/modules/selectedVideo';
 
 export default function Item({ video }) {
-  const { snippet, channelInfo, statistics } = video;
-
-  // TODO: 정보조회가 여기저기서 중복된다.
-  const title = snippet.title;
-  const thumbnail = snippet.thumbnails.medium.url;
-  const publishedAt = snippet.publishedAt;
-  const viewCount = statistics.viewCount;
-
-  const channelTitle = channelInfo.snippet.title;
-  const channelThumbnail = channelInfo.snippet.thumbnails.medium.url;
+  const {
+    title,
+    thumbnail,
+    publishedAt,
+    viewCount,
+    channelTitle,
+    channelThumbnail,
+  } = getVideoInfo(video);
 
   const dispatch = useDispatch();
 

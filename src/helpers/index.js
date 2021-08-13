@@ -32,3 +32,31 @@ export function parseTime(publishedAt) {
     return hours + '시간';
   }
 }
+
+export function getVideoInfo(video) {
+  const {
+    snippet = undefined,
+    statistics = undefined,
+    channelInfo = undefined,
+  } = video;
+
+  const title = snippet?.title;
+  const thumbnail = snippet?.thumbnails.medium.url;
+  const publishedAt = snippet?.publishedAt;
+  const description = snippet?.description;
+  const viewCount = statistics?.viewCount;
+  const channelTitle = channelInfo?.snippet.title;
+  const channelThumbnail = channelInfo?.snippet.thumbnails.medium.url;
+  const subscriberCount = channelInfo?.statistics.subscriberCount;
+
+  return {
+    title,
+    thumbnail,
+    publishedAt,
+    description,
+    viewCount,
+    channelTitle,
+    channelThumbnail,
+    subscriberCount,
+  };
+}
