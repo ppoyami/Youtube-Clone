@@ -28,13 +28,26 @@ export const Icons = styled.div`
   display: flex;
   margin-left: auto;
   padding: 1rem;
+
   & > i {
     margin-left: 2vw;
     margin-right: 0;
   }
+
   & > i:last-child {
     color: violet;
     margin-left: 4vw;
     font-size: 3rem;
   }
+
+  ${({ theme }) => theme.media.mobile`
+      & > i:not(:last-child) {
+        display: none;
+        margin-left: 2vw;
+      }
+
+      & > i:last-child {
+        margin-left: 2vw;
+      }
+  `}
 `;

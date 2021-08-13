@@ -4,6 +4,14 @@ const Global = createGlobalStyle`
   html {
     font-size: 62.5%;
     box-sizing: border-box;
+
+    ${({ theme }) => theme.media.tablet`
+      font-size: 50%;
+    `}
+
+    ${({ theme }) => theme.media.mobile`
+      font-size: 45%;
+    `}
   }
 
   body {

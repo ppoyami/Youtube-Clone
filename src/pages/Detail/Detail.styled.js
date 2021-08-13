@@ -1,12 +1,15 @@
 import styled, { css } from 'styled-components';
 
 export const Layout = styled.div`
-  padding-left: 5rem;
   display: flex;
+
+  ${({ theme }) => theme.media.laptop`
+      flex-direction: column;
+  `}
 `;
 
 export const Content = styled.div`
-  flex: 4;
+  flex: 3;
   padding: 2rem;
 `;
 
@@ -71,5 +74,6 @@ export const SideList = styled.div`
   height: 100vh;
   overflow-y: auto;
   flex: 1;
-  padding: 2rem 0;
+  padding: 1.5rem;
+  padding-left: 0;
 `;

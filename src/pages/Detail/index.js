@@ -1,16 +1,24 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 
+import { ROUTES } from '../../constants';
 import { parseCount, getVideoInfo } from '../../helpers';
 import Video from '../../components/Detail/Video';
 import * as S from './Detail.styled';
 import Item from '../../components/Common/Item';
 
 export default function Detail() {
-  // TODO: 디테일 페이지에서 세로고침하면 에러 생긴다 막을 수 있는 방법은..?
   const [more, setMore] = useState(false);
+
+  const history = useHistory();
+
   const { id, payload } = useSelector(state => state.selectedVideo);
   const { data } = useSelector(state => state.video);
+
+  console.log(data);
+
+  if (!payload) history.push(ROUTES.home);
 
   const {
     title,
@@ -46,9 +54,7 @@ export default function Detail() {
         </S.ChannelInfo>
       </S.Content>
       <S.SideList>
-        {data.map(video => (
-          <Item key={video.id} video={video} />
-        ))}
+        {data && data.map(video => <Item key={video.id} video={video} />)}
       </S.SideList>
     </S.Layout>
   );

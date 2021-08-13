@@ -1,4 +1,5 @@
 export function parseCount(viewcount) {
+  if (!viewcount) return;
   return viewcount.length > 4 ? viewcount.slice(0, -4) + '만' : viewcount;
 }
 
@@ -34,11 +35,9 @@ export function parseTime(publishedAt) {
 }
 
 export function getVideoInfo(video) {
-  const {
-    snippet = undefined,
-    statistics = undefined,
-    channelInfo = undefined,
-  } = video;
+  const snippet = video?.snippet;
+  const statistics = video?.statistics;
+  const channelInfo = video?.channelInfo;
 
   const title = snippet?.title;
   const thumbnail = snippet?.thumbnails.medium.url;

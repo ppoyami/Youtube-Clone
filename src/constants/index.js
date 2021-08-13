@@ -31,11 +31,9 @@ export const icons = {
   유저: BsPeopleCircle(),
   앱: BsGrid3X3Gap(),
   햄버거: BsList(),
-  sidebar_icons: [
-    { component: BsHouseDoorFill(), text: 'Home' },
-    { component: BsCollectionPlay(), text: 'Subscriptions' },
-    { component: BsFillFolderFill(), text: 'Library' },
-  ],
+  홈: BsHouseDoorFill(),
+  구독: BsCollectionPlay(),
+  보관함: BsFillFolderFill(),
 };
 
 export const popular = POPULAR_VIDEO;

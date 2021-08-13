@@ -1,8 +1,7 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPopularVideo } from '../../../store/modules/video';
 
-// import { popular } from '../../../constants';
 import * as S from './List.styled';
 import Item from '../../Common/Item';
 import { useLocation } from 'react-router';

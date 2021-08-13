@@ -3,12 +3,14 @@ import React from 'react';
 import SearchForm from './SearchForm';
 
 import * as S from './Header.styled';
-import { icons } from '../../../constants';
+import { icons, ROUTES } from '../../../constants';
+import { useHistory } from 'react-router';
 
 export default function Header() {
+  const history = useHistory();
   return (
     <S.Header>
-      <S.Logo>{icons.유투브}</S.Logo>
+      <S.Logo onClick={() => history.push(ROUTES.home)}>{icons.유투브}</S.Logo>
       <SearchForm />
       <S.Icon>{icons.마이크}</S.Icon>
       <S.Icons>

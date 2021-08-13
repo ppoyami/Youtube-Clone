@@ -1,5 +1,6 @@
 const initialState = {
-  video: null,
+  id: null,
+  payload: null,
 };
 
 const SET_VIDEO = 'selectedVideo/set';
