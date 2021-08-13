@@ -13,4 +13,17 @@ const httpClient = axios.create({
   },
 });
 
+httpClient.interceptors.response.use(
+  function (response) {
+    // 응답 데이터를 가공
+    // ...
+    return response;
+  },
+  function (error) {
+    // 오류 응답을 처리
+    // ...
+    return Promise.reject({ data: undefined, error });
+  }
+);
+
 export const youtube = new Youtube(httpClient);

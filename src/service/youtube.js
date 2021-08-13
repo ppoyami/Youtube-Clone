@@ -13,27 +13,13 @@ export default class Youtube {
       },
     });
 
-    return this.appendData(
+    return this._appendData(
       response.data.items,
       video => video?.snippet?.channelId,
-      this.channel
-    );
-  }
-  // TODO: try catch 이렇게 쓰는 게 맞는 걸까??
-  async channel(id) {
-    let response;
-    try {
-      response = await this.youtube.get('channels', {
-        params: {
-          part: 'snippet, statistics',
-          id,
-        },
-      });
-    } catch (e) {
-      response = undefined;
-    }
-
-    return { channelInfo: response?.data?.items[0] };
+      this._channel
+    ).catch(e => {
+      throw new Error(e);
+    });
   }
 
   async search(query) {
@@ -46,43 +32,59 @@ export default class Youtube {
       },
     });
 
-    const serchedVideoList = response.data.items.map(item => ({
+    const serchedVideoList = response.data?.items.map(item => ({
       ...item,
       id: item.id.videoId,
     }));
 
-    const result = this.appendData(
+    const result = this._appendData(
       serchedVideoList,
       video => video?.snippet?.channelId,
-      this.channel
-    ).then(list => {
-      return this.appendData(list, video => video.id, this.getVideoStatistics);
-    });
+      this._channel
+    )
+      .then(list => {
+        return this._appendData(
+          list,
+          video => video.id,
+          this._getVideoStatistics
+        );
+      })
+      .catch(e => {
+        throw new Error(e);
+      });
 
     return result;
   }
 
-  async getVideoStatistics(id) {
-    let response;
-    try {
-      response = await this.youtube.get('videos', {
-        params: {
-          part: 'statistics',
-          id,
-        },
-      });
-    } catch (e) {
-      response = undefined;
-    }
+  async _channel(id) {
+    const response = await this.youtube.get('channels', {
+      params: {
+        part: 'snippet, statistics',
+        id,
+      },
+    });
 
-    return { statistics: response?.data?.items[0].statistics };
+    return { channelInfo: response.data?.items[0] };
   }
 
-  appendData(source, getId, f) {
-    const promises = source.map(getId).map(f.bind(this));
+  async _getVideoStatistics(id) {
+    const response = await this.youtube.get('videos', {
+      params: {
+        part: 'statistics',
+        id,
+      },
+    });
 
-    return Promise.all(promises).then(list =>
-      source.map((data, i) => ({ ...data, ...list[i] }))
-    );
+    return { statistics: response.data?.items[0].statistics };
+  }
+
+  _appendData(source, getId, f) {
+    const promises = source?.map(getId)?.map(f.bind(this));
+
+    return Promise.all(promises)
+      .then(list => source.map((data, i) => ({ ...data, ...list[i] })))
+      .catch(e => {
+        throw new Error(e);
+      });
   }
 }
