@@ -13,6 +13,7 @@ function App() {
       <Header />
       <Sidebar />
       <Switch>
+        {/* TODO: 2. RouteWithLayout 으로 교체한다. */}
         <Route exact path={ROUTES.home} component={Home} />
         <Route exact path={ROUTES.search} component={Home} />
         <Route path={ROUTES.detail} component={Detail} />

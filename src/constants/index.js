@@ -13,8 +13,6 @@ import {
 
 import { ImPlay } from 'react-icons/im';
 
-import { POPULAR_VIDEO } from './mock';
-
 export const ROUTES = {
   home: '/',
   search: '/search',
@@ -35,5 +33,3 @@ export const icons = {
   구독: BsCollectionPlay(),
   보관함: BsFillFolderFill(),
 };
-
-export const popular = POPULAR_VIDEO;

@@ -4,6 +4,10 @@ export const Form = styled.form`
   position: relative;
   width: 40%;
   min-width: 20rem;
+
+  ${({ theme }) => theme.media.tablet`
+    width: 60% 
+  `}
 `;
 
 export const Input = styled.input`

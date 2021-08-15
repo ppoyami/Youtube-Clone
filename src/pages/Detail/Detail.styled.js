@@ -9,6 +9,8 @@ export const Layout = styled.div`
 `;
 
 export const Content = styled.div`
+  position: relative;
+  overflow: hidden;
   flex: 3;
   padding: 2rem;
 `;
@@ -50,17 +52,19 @@ export const SubscriberCount = styled.span`
   font-size: 1.3rem;
 `;
 
+// BUG: 가끔씩 깨짐
 export const Desc = styled.pre`
   position: relative;
   font-size: 1.4rem;
   margin: 2rem 0;
   width: 50%;
+  overflow-x: hidden;
 
   ${({ more }) =>
     !more &&
     css`
       height: 10rem;
-      overflow: hidden;
+      overflow-y: hidden;
     `}
 `;
 

@@ -15,9 +15,10 @@ const Global = createGlobalStyle`
   }
 
   body {
+    position: relative;
+    min-height: 100vh;
     font-family: 'Lato', 'Noto Sans KR', serif;
     background-color: ${({ theme }) => theme.colors.backgroundColor};
-    height: 100vh;
     color: ${({ theme }) => theme.colors.textColor}
   }
 

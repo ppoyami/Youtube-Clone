@@ -8,7 +8,7 @@ export default class Youtube {
       params: {
         part: 'snippet, statistics',
         chart: 'mostPopular',
-        maxResults: 10,
+        maxResults: 8,
         regionCode: 'KR',
       },
     });
@@ -26,7 +26,7 @@ export default class Youtube {
     const response = await this.youtube.get('search', {
       params: {
         part: 'snippet',
-        maxResults: 10,
+        maxResults: 8,
         type: 'video',
         q: query,
       },

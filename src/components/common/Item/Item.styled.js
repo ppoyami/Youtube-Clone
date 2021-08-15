@@ -32,15 +32,15 @@ export const TextBox = styled.div`
   flex-direction: column;
 `;
 export const Title = styled.h3`
-  /* max-height: 5rem; */
+  max-height: 5rem;
   font-size: 1.7rem;
-  line-height: 1.7rem;
+  line-height: 2rem;
   font-weight: 700;
   margin-bottom: 1rem;
 
-  height: 3.4rem; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
+  height: 4rem; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
   overflow: hidden;
-  /* text-overflow: ellipsis; */
+  text-overflow: ellipsis;
   -webkit-line-clamp: 2;
 `;
 export const Info = styled.div`

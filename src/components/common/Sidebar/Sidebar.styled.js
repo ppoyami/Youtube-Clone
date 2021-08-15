@@ -5,7 +5,7 @@ export const Container = styled.div`
   top: 0;
   left: 0;
   width: 8rem;
-  height: 100vh;
+  height: 100%;
   background-color: ${({ theme }) => theme.colors.navColor};
   padding-top: 2rem;
 
@@ -28,7 +28,7 @@ export const Container = styled.div`
     border-bottom: 1px solid ${({ theme }) => theme.colors.subTextColor};
   `}
 
-  // TODO: !important가 왜 필요할까?
+  // Q: !important가 왜 필요할까?
   ${({ open }) =>
     open &&
     css`
@@ -80,7 +80,7 @@ export const Icon = styled.i`
     color: ${({ theme }) => theme.colors.textColor};
   }
 
-  // TODO: 아래 css 먹히지 않음
+  // BUG: 아래 css 먹히지 않음
   ${({ open }) =>
     open &&
     css`

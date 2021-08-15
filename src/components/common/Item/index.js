@@ -33,7 +33,7 @@ export default function Item({ video }) {
             <p>{channelTitle}</p>
             <span>조회수 {parseCount(viewCount)}</span>
             <span style={{ margin: '0 .5rem' }}>•</span>
-            <span>{parseTime(publishedAt)}전</span>
+            <span>{parseTime(publishedAt)} 전</span>
           </S.Info>
         </S.TextBox>
       </S.Description>

@@ -3,34 +3,30 @@ export function parseCount(viewcount) {
   return viewcount.length > 4 ? viewcount.slice(0, -4) + '만' : viewcount;
 }
 
-// TODO: 함수 분리시키기: (특정 로직 별 분리가 가능해보인다.)
+// TODO: 다시 작성하기
 export function parseTime(publishedAt) {
-  const date = new Date(); // ! 현재 날짜와 시간을 반환
-  const iso = date.toISOString();
-  const currentTime = date.getTime(iso);
+  // 현재 날짜 - 업로드 날짜 = 두 날짜의 차이(ms)
+  const currentTime = new Date().getTime();
+  const uploadTime = new Date(publishedAt).getTime();
+  let gapMs = currentTime - uploadTime;
 
-  const uploadDate = new Date(publishedAt); // ! 지정된 날짜와 시간을 가지는 인스턴스를 반환 (Date.parse 메소드에 의해 해석 가능한 형식의 dateString을 받는다.)
-  const uploadTime = uploadDate.getTime();
+  const days = Math.floor(gapMs / (1000 * 60 * 60 * 24));
+  gapMs -= days * (1000 * 60 * 60 * 24);
 
-  const timeGap = currentTime - uploadTime;
-  // 1628751997808 - 1628579199000 = 172798808
-  const displayTime = new Date(timeGap);
+  const hours = Math.floor(gapMs / (1000 * 60 * 60));
+  gapMs -= hours * (1000 * 60 * 60);
 
-  const hours = displayTime.getHours();
-  const minutes = displayTime.getMinutes();
+  const minutes = Math.floor(gapMs / (1000 * 60));
+  gapMs -= minutes * (1000 * 60);
 
-  // console.log(publishedAt); //  2021-08-10T07:06:39Z
-  // console.log(uploadDate); // Tue Aug 10 2021 16:06:39 GMT+0900 (한국 표준시)
-  // console.log(currentTime); // 1628751997808
-  // console.log(iso); // 2021-08-12T07:06:37.808Z
-  // console.log(`${currentTime} - ${uploadTime} = ${timeGap}`); // 1628752603551 - 1628579199000 = 173404551
-
-  if (hours === 0) {
-    return minutes + '분';
-  } else if (hours > 24) {
-    return hours / 24 + '일';
+  if (days > 0) {
+    return `${days}일`;
+  } else if (hours > 0) {
+    return `${hours}시간`;
+  } else if (minutes > 0) {
+    return `${minutes}분`;
   } else {
-    return hours + '시간';
+    return '조금';
   }
 }
 
