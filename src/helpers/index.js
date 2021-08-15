@@ -10,6 +10,12 @@ export function parseTime(publishedAt) {
   const uploadTime = new Date(publishedAt).getTime();
   let gapMs = currentTime - uploadTime;
 
+  const years = Math.floor(gapMs / (1000 * 60 * 60 * 24 * 30 * 12));
+  gapMs -= years * (1000 * 60 * 60 * 24 * 30 * 12);
+
+  const months = Math.floor(gapMs / (1000 * 60 * 60 * 24 * 30));
+  gapMs -= months * (1000 * 60 * 60 * 24 * 30);
+
   const days = Math.floor(gapMs / (1000 * 60 * 60 * 24));
   gapMs -= days * (1000 * 60 * 60 * 24);
 
@@ -19,7 +25,11 @@ export function parseTime(publishedAt) {
   const minutes = Math.floor(gapMs / (1000 * 60));
   gapMs -= minutes * (1000 * 60);
 
-  if (days > 0) {
+  if (years > 0) {
+    return `${years}년`;
+  } else if (months > 0) {
+    return `${months}달`;
+  } else if (days > 0) {
     return `${days}일`;
   } else if (hours > 0) {
     return `${hours}시간`;
